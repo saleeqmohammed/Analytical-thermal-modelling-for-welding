@@ -24,3 +24,4 @@ if __name__=="__main__":
 
         result=mathmodel.combinedata(result)
         plotter.weld_plot("space-temperature",result)
+    multipassyz(1)
