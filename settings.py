@@ -8,21 +8,21 @@ twaiting=30
 t = 30 # time
 T0 = 303
 a = 11.72
-ah = 6
+ah = 8.062
 bh = 3.003
 rf = 2/3
 rb = 4/3
 chf = 7
 chb =2*chf
 v = 6.77
-Tmelting = 1400
+Tmelting = 1700
 Tmelting_rel = Tmelting - T0
 Source_voltage = 26
 Source_current = 617
-Source_efficiency = 0.8
+Source_efficiency = 0.92
 rho = 7820*10**-9
 c = 600
-Q = Source_efficiency*Source_current*Source_voltage
+Q = Source_efficiency*Source_current*Source_voltage #power
 x_range = np.linspace(-20,250,num = res_x )#229
 
 y_range = np.linspace(-50,50,num = res_y)#49
