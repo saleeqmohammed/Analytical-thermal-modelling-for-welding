@@ -17,11 +17,11 @@ if __name__=="__main__":
                 est=mathmodel.modifyrange(est,i*20,"y")
                 result.append(est)
             except:
-                est = mathmodel.calculate(30+i*twaiting,[0],y_range,z_range)
+                est = mathmodel.calculate(30,[0],y_range,z_range)
                 est=mathmodel.modifyrange(est,i*20,"y")
                 result.append(est)
                 datamanagement.save_object(est,filename)
 
         result=mathmodel.combinedata(result)
         plotter.weld_plot("space-temperature",result)
-    multipassyz(1)
+    multipassyz(2)
