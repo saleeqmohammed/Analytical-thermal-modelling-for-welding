@@ -12,6 +12,16 @@ if __name__=="__main__":
     
         result=[]    
         for i in range(N_pass):
+            filename="pass"+str(i+1)+"data"
+            try:
+                est=datamanagement.load_object(filename+".pickle")
+                est=mathmodel.modifyrange(est,i*20,"y")
+                result.append(est)
+            except:
+                est = mathmodel.calculate(30,[0],y_range,z_range)
+                est=mathmodel.modifyrange(est,i*20,"y")
+                result.append(est)
+                datamanagement.save_object(est,filename)
 
             el_time=t-i*(twelding+twaiting)
             print(el_time)

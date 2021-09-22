@@ -5,9 +5,12 @@ from settings import*
 import scipy.integrate as integrate
 from math import *
 import numpy as np
+
 def integrand(tp,x,y,z):
-    K =( 1/sqrt((( 12 * a * (t-tp) + ah**2)) * ((12*a*(t-tp) +bh**2)) ))*((rf*exp( ( -3*(x-v*tp)**2/(12*a*(t-tp)+chf**2)) - ( 3*y**2/(12*a*(t-tp)+ah**2)) - (3*z**2/(12*a*(t-tp)+bh**2)) )/(sqrt(12*a*t-tp)+chf**2))+(rb*exp( ( -3*(x-v*tp)**2/(12*a*(t-tp)+chb**2)) - ( 3*y**2/(12*a*(t-tp)+ah**2)) - (3*z**2/(12*a*(t-tp)+bh**2)) )/(sqrt(12*a*t-tp)+chb**2)))
-    return K
+    K =( 1/sqrt((( 12 * a * (t-tp) + ah**2)) * ((12*a*(t-tp) +bh**2)) ))
+    A = rf*exp( ( -3*(x-v*tp)**2/(12*a*(t-tp)+chf**2)) - ( 3*y**2/(12*a*(t-tp)+ah**2)) - (3*z**2/(12*a*(t-tp)+bh**2)) )/(sqrt(12*a*t-tp)+chf**2)
+    B = rb*exp( ( -3*(x-v*tp)**2/(12*a*(t-tp)+chb**2)) - ( 3*y**2/(12*a*(t-tp)+ah**2)) - (3*z**2/(12*a*(t-tp)+bh**2)) )/(sqrt(12*a*t-tp)+chb**2)
+    return K*(A+B)
 
 def calculate(el_time,x_range,y_range,z_range):
     calc_data = dict()
