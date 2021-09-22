@@ -3,7 +3,7 @@ from matplotlib import pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 from matplotlib import cm
 import numpy as np
-
+from scipy.spatial import ConvexHull, convex_hull_plot_2d
 
 def weld_plot(plot_type,data):
     point_x=[]
@@ -24,11 +24,31 @@ def weld_plot(plot_type,data):
         plt.xlabel('Y - axis')
         plt.ylabel('Z - axis')
         plt.colorbar()
-        plt.show()
+        weld_plot_curve(plot_type,data)
         
+def weld_plot_curve(data):
+    point_x=[]
+    point_y=[]
+    point_z=[]
+    point_temp=[]
+    points=[]
 
-    else:
-        print("Err: No such plot")
+    
+    for key,value in data.items():
+        if key[0]==0 and value>Tmelting_rel:
+            point_y.append(key[1]*0.1)
+            point_z.append(key[2]*0.1)
+            point_temp.append(value)
+    for i in range(len(point_y)):
+        points.append([point_y[i],point_z[i]])
+    points= np.array(points)
+    hull = ConvexHull(points)
+    plot = plt.figure(1)
+    for simplex in hull.simplices:
+        plt.plot(points[simplex, 0], points[simplex, 1], 'g-')
+    
+    plt.show()
+
 
 
 def set_axes_equal(ax):

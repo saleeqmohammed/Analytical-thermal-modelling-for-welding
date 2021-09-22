@@ -1,3 +1,6 @@
+from sys import implementation
+
+from matplotlib.pyplot import vlines
 from settings import*
 import scipy.integrate as integrate
 from math import *
@@ -36,11 +39,23 @@ def combinedata(things):
     res=dict()
     for item in things:
         for key,value in item.items():
+            
             if key in res.keys():
                 res[key]+=value
             else:
                 res[key]=value
     return res
+def ModifiedCombinedata(pools,Toffset):
+    res = dict()
+    
+    for pool in pools:
+        for key,value in pool.items():
+            if( key[1] > -15 )and (key[1] < 25):
+                res[key]=value+Toffset
+            else:
+                res[key] = value
+    return res
+
 def calculate_temporal(x,y,z,ti):
     t_range= np.linspace(0,ti,100)
     tempdata=[]

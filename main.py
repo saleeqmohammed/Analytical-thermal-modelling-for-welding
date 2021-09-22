@@ -9,19 +9,20 @@ if __name__=="__main__":
     #datamanagement.save_object(pass1data,"pass1data")
 
     def multipassyz(N_pass):
+    
         result=[]    
         for i in range(N_pass):
-            filename="pass"+str(i+1)+"data"
-            try:
-                est=datamanagement.load_object(filename+".pickle")
-                est=mathmodel.modifyrange(est,i*20,"y")
-                result.append(est)
-            except:
-                est = mathmodel.calculate(30+i*twaiting,[0],y_range,z_range)
-                est=mathmodel.modifyrange(est,i*20,"y")
-                result.append(est)
-                datamanagement.save_object(est,filename)
 
-        result=mathmodel.combinedata(result)
+            el_time=t-i*(twelding+twaiting)
+            print(el_time)
+            est = mathmodel.calculate(el_time,[0],y_range,z_range)
+            est=mathmodel.modifyrange(est,i*20,"y")
+        
+            result.append(est)
+               # datamanagement.save_object(est,filename)
+
+        #result=mathmodel.ModifiedCombinedata(result,0)
+        result =  mathmodel.combinedata(result)
+        
         plotter.weld_plot("space-temperature",result)
-    multipassyz(1)
+    multipassyz(2)

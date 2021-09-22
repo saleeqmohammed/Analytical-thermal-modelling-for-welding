@@ -1,16 +1,20 @@
+from matplotlib.pyplot import twinx
 import numpy as np
 #----------------------PLOT RESOLUTION:INCRESE THESE VALUES TO INCRESE PLOT RESOLUTION-------------------------------------------
 res_x =50
-res_y =30
-res_z =20
+res_y =100
+res_z =70
 #--------------------------------------------------------------------------------------------------------------------------------
-twaiting=30
-t = 30 # time
+twaiting=100
+N_pass =2
+# total time
+twelding = 30
+t = twelding +(N_pass)*(twelding+twaiting)
 T0 = 303
 a = 11.72
 ah = 8.062
 bh = 3.003
-rf = 2/3
+rf = 2/3 
 rb = 4/3
 chf = 7
 chb =2*chf
